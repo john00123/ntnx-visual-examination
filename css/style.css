@@ -490,9 +490,10 @@ article {
 }
 
 article p {
-  color: #7C8D9F;
+  color: #9AA5B5;
   font-size: 16px;
   line-height: 1.75;
+  font-weight: 400;
 }
 
 .grid {
@@ -581,4 +582,10 @@ input {
 
 input::placeholder {
   color: #627386 !important;
+}
+
+input, button {
+  padding: 14px 12px !important;
+  height: auto !important;
+  font-size: 16px !important;
 }
