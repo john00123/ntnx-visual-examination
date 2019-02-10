@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   font: 400 14px/10px "nutanix_soft", san-serif;
   text-rendering: optimizeSpeed;
@@ -307,6 +306,15 @@ header {
 }
 
 .subheader {
+  top: 0;
+  left: 0;
+  color: white;
+  z-index: 5;
+  position: fixed;
+  padding: 0 20px;
+  background: #191B20;
+  will-change: transform;
+  transform: translate3d(0px, -120px, 0px);
   height: 60px;
   width: 100%;
   box-sizing: border-box;
@@ -314,144 +322,103 @@ header {
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  padding: 0 20px;
-}
-
-.subheader {
-  top: 0;
-  left: 0;
-  position: fixed;
-  transform: translate3d(0px, -120px, 0px);
   transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-  will-change: transform;
-  z-index: 5;
-  background-color: #191B20;
-  color: white;
-  border-bottom: none;
-  overflow: hidden;
-}
-
-.subheader .page-subtitle {
-  border-color: #627386;
-}
-
-.subheader li.active {
-  color: white;
-}
-
-.subheader li:hover {
-  color: white;
-}
-
-.subheader .dark-subheader .hamburger:before, .subheader .dark-subheader .hamburger:after, .subheader .dark-subheader .patty {
-  background-color: white;
-}
-
-.subheader .dark-subheader:before {
-  content: ‘’;
-  width: 100%;
-  height: 60px;
-  background: inherit;
-  position: absolute;
-  top: 60px;
-  bottom: 0;
-  box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.3);
-  filter: blur(10px);
 }
 
 .page-subtitle {
-  border-right: 1px solid #D5DAE0;
-  height: 16px;
+  margin: 0 20px;
   padding-right: 20px;
-  margin-right: 20px;
-  margin-left: 20px;
-  line-height: 18px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  min-width: 11ch;
-  overflow: hidden;
-  display: inline;
-}
-
-.main-back {
-  margin-right: -5px;
+  border-right: 1px solid #22272E;
+  height: 16px;
+  width: auto;
+  box-sizing: border-box;
 }
 
 .slideDown {
-  transform: translate3d(0px, 0px, 0px);
   opacity: 1;
-}
-
-.back-section {
-  transition: color 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-  transition-duration: 200ms;
-}
-
-.back-section svg {
-  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-  transition-duration: 400ms;
-  will-change: transform;
-}
-
-.back-section:hover {
-  color: #22A5F7;
-  cursor: pointer;
-}
-
-.back-section:hover svg {
-  transform: translate3d(2px, 0px, 0px);
-}
-
-li {
-  list-style: none;
-  color: #627386;
-  font-weight: 500;
-  margin-left: 30px;
-  position: relative;
-}
-
-.active {
-  color: #22272E;
-}
-
-.active::after {
-  content: '';
-  height: 2px;
-  width: 100%;
-  box-sizing: border-box;
-  background-color: #22A5F7;
-  position: absolute;
-  bottom: -25px;
-  left: 0;
-}
-
-li:hover {
-  color: #22272E;
-  cursor: pointer;
-}
-
-.level1 {
-  text-transform: capitalize;
-}
-
-@media only screen and (max-width: 600px) {
-  .subheader li {
-    display: none;
-  }
+  transform: translate3d(0px, 0px, 0px);
 }
 
 .progress {
-  position: fixed;
-  left: 0;
   top: 60px;
+  left: 0px;
   z-index: 10;
-  transition: width 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: fixed;
+  background: #FDAB06;
   will-change: width;
   height: 2px;
+  width: 0;
+  box-sizing: border-box;
+  transition: width 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes confetti-slow {
+  0% {
+    transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+  }
+  100% {
+    transform: translate3d(25px, 105vh, 0) rotateX(360deg) rotateY(180deg);
+  }
+}
+
+@keyframes confetti-medium {
+  0% {
+    transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+  }
+  100% {
+    transform: translate3d(100px, 105vh, 0) rotateX(100deg) rotateY(360deg);
+  }
+}
+
+@keyframes confetti-fast {
+  0% {
+    transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+  }
+  100% {
+    transform: translate3d(-50px, 105vh, 0) rotateX(10deg) rotateY(250deg);
+  }
+}
+
+.underlay {
+  height: 100vh;
   width: 100%;
   box-sizing: border-box;
-  width: 0;
-  background-color: #FDAB06;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.confetti-container {
+  perspective: 700px;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.confetti {
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  border-radius: 0;
+  pointer-events: none;
+}
+
+.confetti--animation-slow {
+  animation: confetti-slow 3.25s linear 1 forwards;
+}
+
+.confetti--animation-medium {
+  animation: confetti-medium 2.75s linear 1 forwards;
+}
+
+.confetti--animation-fast {
+  animation: confetti-fast 2.25s linear 1 forwards;
 }
 
 html {
@@ -473,33 +440,42 @@ body {
   height: 100%;
   width: 100%;
   box-sizing: border-box;
-  max-width: 1440px;
   margin: 60px auto;
 }
 
-.compress {
+body, .compress {
   max-width: 1440px;
-  margin: auto;
-  width: 100%;
 }
 
 article {
   margin-top: 30px;
-  padding: 20px;
   max-width: 80ch;
+  padding: 20px;
 }
 
 article p {
-  color: #9AA5B5;
   font-size: 16px;
   line-height: 1.75;
   font-weight: 400;
+  color: #9AA5B5;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 20px;
+input {
+  outline: none;
+  border: none !important;
+  color: white !important;
+  border-color: transparent;
+  background-color: #191B20;
+}
+
+input::placeholder {
+  color: #627386 !important;
+}
+
+input, button {
+  height: 40px !important;
+  padding: 14px 12px !important;
+  font-size: 16px !important;
 }
 
 button {
@@ -544,16 +520,23 @@ button:active {
   background: #FB8F00;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.compress {
+  margin: auto;
+  width: 100%;
+}
+
 .card {
-  background-color: #37414B;
   border-radius: 4px;
+  background: #191B20;
   height: 300px;
   width: auto;
   box-sizing: border-box;
-  background: url("https://airbnb.design/wp-content/uploads/2018/10/Illustration_cover.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
@@ -562,30 +545,6 @@ button:active {
   box-shadow: inset 0 0 0 2px #FDAB06;
 }
 
-.card:nth-child(2) {
-  background: url("../img/image2.png");
-  background-size: cover;
-  background-position: center;
-}
-
 .selected {
   box-shadow: inset 0 0 0 2px #FDAB06;
-}
-
-input {
-  border: none !important;
-  background-color: #191B20;
-  outline: none;
-  border-color: transparent;
-  color: white !important;
-}
-
-input::placeholder {
-  color: #627386 !important;
-}
-
-input, button {
-  padding: 14px 12px !important;
-  height: auto !important;
-  font-size: 16px !important;
 }

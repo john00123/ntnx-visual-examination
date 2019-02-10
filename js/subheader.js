@@ -17,7 +17,7 @@ $('.subheader').append(`<div class='compress' hcd>
   <div class='back-section' hcs>
     ${nutanixLogo}
     <h2 class='page-subtitle' hc >Visual Examination</h2>
-    <h3 class='level1' alt> Introduction</h3>
+    <h3 class='breadcrumb' alt> Introduction</h3>
   </div>
 `);
 
