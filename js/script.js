@@ -8,7 +8,7 @@ let   random     = qData.sort(() => 0.5 - Math.random());
 function next(){
 
   //progress tracking
-  question += 5
+  question += 20
   number   += 1
   const comparison = $('.comparison')
   let answer = $('input').val()
@@ -29,7 +29,7 @@ function next(){
 
         comparison.html(qData[number-1].images.map(value =>
         `<div class='card option ${value.value}' vc>
-          <img src='${value.pic}'>
+          <img src='${value.pic}' height=300px>
         </div>`))
         comparison.addClass('bye-left');
 
@@ -70,9 +70,9 @@ function next(){
   if ( number == qData.length+1){
     confetti()
     $('button').remove()
+    $('h2').text('Congratulations')
+    $('p').text('You have finished the test, your data has been sent to our servers and some more text here explaining how to fill their personal information')
   }
-
-
 }
 
 //previous
@@ -102,7 +102,7 @@ content.append(`
     <h2>${data.title}</h2>
     <p> ${data.description}</p>
     <div class='comparison grid'>
-      <div class='card'></div>
+      <div class='card'><img src='https://airbnb.design/wp-content/uploads/2018/10/Illustration_cover.jpg' height=300px/></div>
     </div>
     <div class='grid'>
     <button class='next' onClick='next()'> Start</button>
