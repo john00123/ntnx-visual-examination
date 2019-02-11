@@ -546,6 +546,10 @@ button:active {
   width: 100%;
 }
 
+.cover {
+  pointer-events: none;
+}
+
 .card {
   border-radius: 4px;
   overflow: hidden;

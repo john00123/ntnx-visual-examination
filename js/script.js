@@ -102,7 +102,7 @@ content.append(`
     <h2>${data.title}</h2>
     <p> ${data.description}</p>
     <div class='comparison grid'>
-      <div class='card'><img src='https://airbnb.design/wp-content/uploads/2018/10/Illustration_cover.jpg' height=300px/></div>
+      <div class='card cover'><img src='https://airbnb.design/wp-content/uploads/2018/10/Illustration_cover.jpg' height=300px/></div>
     </div>
     <div class='grid'>
     <button class='next' onClick='next()'> Start</button>
