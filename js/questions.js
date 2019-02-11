@@ -1,26 +1,33 @@
 let qData =[
   { q_num: 1,
-    images:['../img/1.svg','../img/1.svg'],
+    images:[
+      {pic: '../img/1.svg', value: 'a'},
+      {pic: '../img/1.svg', value: 'b'}
+    ],
     comment:'',
     answer :''
   },
   { q_num: 2,
-    images:['../img/2.svg','../img/2.svg'],
+    images:[
+      {pic: '../img/2.svg', value: 'a'},
+      {pic: '../img/2.svg', value: 'b'}
+    ],
     comment:'',
     answer :''
   },
   { q_num: 3,
-    images:['../img/3.svg','../img/3.svg'],
+    images:[
+      {pic: '../img/3.svg', value: 'a'},
+      {pic: '../img/3.svg', value: 'b'}
+    ],
     comment:'',
     answer :''
   },
   { q_num: 4,
-    images:['../img/4.svg','../img/4.svg'],
-    comment:'',
-    answer :''
-  },
-  { q_num: 5,
-    images:[''],
+    images:[
+      {pic: '../img/4.svg', value: 'a'},
+      {pic: '../img/4.svg', value: 'b'}
+    ],
     comment:'',
     answer :''
   },

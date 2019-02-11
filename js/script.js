@@ -5,33 +5,74 @@ let   question   = 0
 let   number     = 0
 let   random     = qData.sort(() => 0.5 - Math.random());
 
-
-//next
 function next(){
+
   //progress tracking
   question += 5
   number   += 1
-  //subheader changes
-  progress.css('width',`${question}%`)
-  breadcrumb.text(`Question ${number  }` )
+  const comparison = $('.comparison')
   let answer = $('input').val()
 
-  $('.comparison').html(random[number-1].images.map
-    (value => `<div class='card' vc> <img src='${value}'> </div>`)
-  )
+  //initial state for next question
+  $('.option').removeClass('selected ')
+  comparison.addClass('bye');
+  $('input').addClass('bye');
+
+  //subheader changes
+  progress   .css('width',`${question}%` )
+  breadcrumb.text(`Question ${number  }` )
+
+  //images
+  if (number < qData.length+1){ setTimeout(function () {
+        const option = $('.option')
 
 
-  random[number-1].comment = answer
-  $('input').val('');
-  
+        comparison.html(qData[number-1].images.map(value =>
+        `<div class='card option ${value.value}' vc>
+          <img src='${value.pic}'>
+        </div>`))
+        comparison.addClass('bye-left');
+
+
+        //select
+        $('.option').click(function(){
+          $('.option').removeClass('selected')
+          $(this).addClass('selected')
+
+          $(this).hasClass('a') ?
+          qData[number-1].answer = 'a' :
+          qData[number-1].answer = 'b'
+        })
+
+        setTimeout(function() {
+          comparison.removeClass('bye')
+          $('input').removeClass('bye');
+        }, 10);
+
+    }, 600);
+  }
+
+  //comment
+  if (number >= 2){
+    qData[number-2].comment = answer
+    $('input').val('') //clears input
+  }
 
   if(number == 1){
-    $('.comparison').after(`<br><br><input placeholder='Add Comment (Optional)'/>`)
+    comparison.after(`
+      <input class='bye' placeholder='Add Comment (Optional)'/>`)
+    $('button').text('Next')
   }
 
 
-  // TODO: push values into object withing the array at [number-1]
-  // $('.card').html(questions[number].map(value=> `<img src='${value}'/>`))
+
+  //
+  if ( number == qData.length+1){
+    confetti()
+    $('button').remove()
+  }
+
+
 }
 
 //previous
@@ -43,15 +84,17 @@ function restart(){
 }
 
 //Submit to db
-function submit(){
-  random.sort()
-  //here it is pushed to database
-}
+// function submit(){
+//   random.sort()
+//   //here it is pushed to database
+// }
 
 const data = {
   title:'Visual Examination',
   description:'Use your senses and attention to detail to find the differences between these images and select the one more visually balanced.'
 }
+
+
 
 
 content.append(`

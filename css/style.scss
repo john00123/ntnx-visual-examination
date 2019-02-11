@@ -36,16 +36,22 @@ input{
   border : none!important  ;
   color  : white!important ;
   border-color: transparent;
+  margin-top: 20px;
+  margin-bottom: 0!important;
   background-color: #191B20;
   &::placeholder{ color: $font-color-2!important}
+  @include transition(all);
+  animation-delay: 200ms;
 }
 input, button{
   height : 40px !important;
   padding: 14px 12px!important;
   font-size:    16px!important;
+
 }
 button{
   @include primary();
+  margin-top:   20px!important;
   color: $background-color-1;
   background: #FDAB06;
   &:hover{
@@ -57,6 +63,15 @@ button{
   }
 }
 
+.comparison{
+  @include transition(all);
+  transition-duration: 300ms;
+}
+
+.bye{
+  transform: translateX(80px);
+  opacity: 0;
+}
 
 //
 .grid{ @include grid(300px, 1fr, 20px)}
@@ -68,9 +83,17 @@ button{
 
 .card{
   border-radius: 4px;
+  overflow: hidden;
   background: #191B20;
+
+  &:nth-child(1){
+    transition-delay: 300ms;
+  }
+
+  transform-origin: 100% 50%;
   @include size(300px, auto);
   @include transition(all);
+    transition-duration: 300ms;
 
 
   &:hover{
