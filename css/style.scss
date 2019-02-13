@@ -18,6 +18,21 @@ body{
   @include size(100%, 100%);
   margin: 60px auto;
 }
+#preloadedImages{
+   width: 0px;
+   height: 0px;
+   display: inline;
+   background-image: url(/img/hero.jpg);
+   background-image: url(img/1_A.jpg);
+   background-image: url(img/1_B.jpg);
+   background-image: url(img/2_A.jpg);
+   background-image: url(img/2_B.jpg);
+   background-image: url(img/3_A.jpg);
+   background-image: url(img/3_B.jpg);
+   background-image: url(img/4_A.jpg);
+   background-image: url(img/4_B.jpg);
+   background-image: url();
+}
 body, .compress{ max-width: 1440px }
 article{
   margin-top: 30px;
