@@ -31,7 +31,6 @@ function next(){
         `<div class='card option ${value.value}' vc>
           <img src='${value.pic}' height=300px>
         </div>`))
-        comparison.addClass('bye-left');
 
 
         //select
@@ -45,6 +44,7 @@ function next(){
           qData[number-1].answer = 'b'
         })
 
+
         setTimeout(function() {
           comparison.removeClass('bye')
           $('input').removeClass('bye');
@@ -52,6 +52,7 @@ function next(){
 
     }, 600);
   }
+
 
   //comment
   if (number >= 2){
