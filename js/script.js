@@ -103,7 +103,7 @@ content.append(`
     <h2>${data.title}</h2>
     <p> ${data.description}</p>
     <div class='comparison grid'>
-      <div class='card cover'><img src='../img/hero.jpg' height=300px/></div>
+      <div class='card cover'><img src='img/hero.jpg' height=300px/></div>
     </div>
     <div class='grid'>
     <button class='next' onClick='next()'> Start</button>
