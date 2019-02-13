@@ -69,8 +69,10 @@ function next(){
   if ( number == qData.length+1){
     confetti()
     $('button').remove()
+    $('a').remove()
     $('h2').eq(1).text('Congratulations')
     $('p').text('You have finished the test, your data has been sent to our servers and some more text here explaining how to fill their personal information')
+    $('p').after(`<p>Your Score is </p> <h1 style='font-size:4em'>💩</h1> <br> <p>Just Kidding not score has been set up in place </p>`)
   }
 }
 
@@ -90,7 +92,7 @@ function restart(){
 
 const data = {
   title:'Visual Examination',
-  description:'Use your senses and attention to detail to find the differences between these images and select the one more visually balanced.'
+  description:'Use your senses and attention to detail to find the differences between these images and choose the one with the best application of typography, spacing and visual hierarchy.'
 }
 
 
