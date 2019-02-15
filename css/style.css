@@ -344,7 +344,7 @@ header {
   left: 0px;
   z-index: 10;
   position: fixed;
-  background: #FDAB06;
+  background: #22A5F7;
   will-change: width;
   height: 2px;
   width: 0;
@@ -459,14 +459,11 @@ body {
   background-image: url();
 }
 
-body, .compress {
-  max-width: 1440px;
-}
-
 article {
   margin-top: 30px;
-  max-width: 80ch;
+  max-width: 800px;
   padding: 20px;
+  box-sizing: content-box;
 }
 
 article p {
@@ -474,6 +471,7 @@ article p {
   line-height: 1.75;
   font-weight: 400;
   color: #9AA5B5;
+  padding-bottom: 20px;
 }
 
 input {
@@ -509,9 +507,7 @@ button {
   text-decoration: none;
   background-color: #22A5F7;
   outline: none;
-  margin-top: 20px !important;
-  color: #22272E;
-  background: #FDAB06;
+  margin-top: 40px !important;
 }
 
 button:hover {
@@ -530,15 +526,6 @@ button span {
   display: block;
   font-weight: 500;
   line-height: 9pt;
-}
-
-button:hover {
-  background: #FCA001;
-  color: #22272E;
-}
-
-button:active {
-  background: #FB8F00;
 }
 
 .comparison {
@@ -585,12 +572,12 @@ button:active {
 
 .card:hover {
   cursor: pointer;
-  box-shadow: inset 0 0 0 2px #FDAB06;
+  box-shadow: inset 0 0 0 2px #22A5F7;
   opacity: 1;
 }
 
 .selected {
-  box-shadow: inset 0 0 0 2px #FDAB06;
+  box-shadow: inset 0 0 0 2px #22A5F7;
 }
 
 .not-selected {
